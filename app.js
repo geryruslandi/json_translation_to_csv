@@ -50,7 +50,7 @@ function storeObjectAsCsv(object, fileName) {
     let csvData = 'translation_path,english'
 
     for (const key in object) {
-        csvData = csvData + `\n${key},${object[key]}`
+        csvData = csvData + `\n${key},"${object[key]}"`
     }
 
     fs.writeFileSync(`./csv/${fileName}.csv`, csvData)
