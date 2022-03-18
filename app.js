@@ -1,4 +1,11 @@
+import fs from 'fs';
 
+const files = fs.readdirSync('./json').filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));
+
+for (const fileName of files) {
+    const file = fs.readFileSync(`./json/${fileName}`)
+    const json = JSON.parse(file);
+}
 
 const formattedCsvData = {}
 
@@ -28,9 +35,3 @@ function walkThroughObject(object, path = "") {
         }
     }
 }
-
-
-
-walkThroughObject(json)
-
-console.log(formattedCsvData)
